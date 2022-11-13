@@ -10,8 +10,8 @@ import numpy as np
 # df = pd.read_csv(
 #     r'C:\Users\Максим\Desktop\forFBpost.csv', delimiter=';' 
 # )
-df = pd.read_csv('https://github.com/MaximKondakov/Test-tasks/blob/3afe3ae18d0a85ce095d05c757d7bf2a5fd6fd68/Digital-dvoinik/my_out.csv')
-
+url = 'https://raw.githubusercontent.com/MaximKondakov/Test-tasks/3afe3ae18d0a85ce095d05c757d7bf2a5fd6fd68/Digital-dvoinik/my_out.csv'
+df = pd.read_csv(url)
 # geolocator = Nominatim(user_agent="Tester")
 # res={}
 # city_list = df['Город'].unique()
