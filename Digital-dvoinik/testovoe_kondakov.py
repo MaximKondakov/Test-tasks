@@ -4,23 +4,24 @@ from dash import Dash, html, dcc, Input, Output, dash_table
 import plotly.express as px
 import pandas as pd
 import numpy as np
-from geopy import geocoders 
-from geopy.geocoders import Nominatim
+# from geopy import geocoders 
+# from geopy.geocoders import Nominatim
 
-df = pd.read_csv(
-    r'C:\Users\Максим\Desktop\forFBpost.csv', delimiter=';' 
-)
+# df = pd.read_csv(
+#     r'C:\Users\Максим\Desktop\forFBpost.csv', delimiter=';' 
+# )
+df = pd.read_csv('https://github.com/MaximKondakov/Test-tasks/blob/3afe3ae18d0a85ce095d05c757d7bf2a5fd6fd68/Digital-dvoinik/my_out.csv')
 
-geolocator = Nominatim(user_agent="Tester")
-res={}
-city_list = df['Город'].unique()
+# geolocator = Nominatim(user_agent="Tester")
+# res={}
+# city_list = df['Город'].unique()
 
-for city in city_list:
-  location = geolocator.geocode(city)
-  res[city] = (location.latitude, location.longitude)
+# for city in city_list:
+#   location = geolocator.geocode(city)
+#   res[city] = (location.latitude, location.longitude)
 
-df['longitude'] = df.apply(lambda x: res.get(x['Город'])[1], axis=1)
-df['latitude'] = df.apply(lambda x: res.get(x['Город'])[0], axis=1)
+# df['longitude'] = df.apply(lambda x: res.get(x['Город'])[1], axis=1)
+# df['latitude'] = df.apply(lambda x: res.get(x['Город'])[0], axis=1)
 
 def another_graph():
     data1 = df.copy()
@@ -43,7 +44,7 @@ def another_graph():
 
 
 app = Dash(__name__)
-
+server = app.server
 app.layout = html.Div(
     [
     html.H1(id = 'H1', children = 'Testovoe zadanie', style = {'textAlign':'center',\
